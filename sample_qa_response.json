@@ -1,0 +1,10 @@
+﻿{
+    "answer":  "The main conclusion of the document is to keep experiments small and iterate quickly [sample.txt | chunk:0].",
+    "sources":  [
+                    {
+                        "file":  "sample.txt",
+                        "chunk_id":  0,
+                        "score":  1.3178519010543823
+                    }
+                ]
+}
