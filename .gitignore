@@ -1,8 +1,21 @@
-venv/
+# Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+
+# Databases & logs
 *.db
 *.log
+
+# Environment
 .env
+venv/
+
+# IDE settings
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
