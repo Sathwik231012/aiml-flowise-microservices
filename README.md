@@ -1,16 +1,17 @@
 # AIML Flowise Microservices
 
-A FastAPI-based microservice that exposes AI/ML functionalities (like text summarization) as APIs.  
-This project is modular, with clean separation of routes and services, and is ready to be extended.
+A FastAPI-based microservice that exposes AI/ML functionalities like document upload, embeddings, and Retrieval-Augmented Generation (RAG) Q&A as APIs.
+The project is modular with clean separation of routes and services, making it easy to extend with more AI/ML features.
 
 ---
 
 ## 🚀 Features
 - FastAPI backend with automatic Swagger docs (`/docs`)
+- Document Upload & Indexing (chunks documents, stores embeddings)
+- RAG-based Question Answering (retrieves relevant chunks + generates answer)
 - Modular project structure (routes & services)
-- Example AI/ML service: Text Summarization (stubbed, extendable to real LLMs)
-- Easy deployment with Uvicorn
-- Ready for GitHub versioning
+- Ready for Docker & deployment
+- Version controlled on GitHub for easy collaboration
 
 ---
 
@@ -51,13 +52,33 @@ The API will be available at:
 
 ## Example API Usage
 
-### POST ```/summarize/```
+### 1. Upload Document
+
+**POST ```/docs/upload```**
+
+```bash
+curl -X POST "http://127.0.0.1:8000/docs/upload" -F "file=@sample.txt"
+```
+
+**Response:**
+
+```json
+{
+  "file": "sample.txt",
+  "chunks_indexed": 3
+}
+```
+
+### 2. Ask Questions (RAG Q&A)
+
+**POST ```/qa/```**
 
 **Request:**
 
 ```json
 {
-  "text": "Artificial intelligence is transforming industries..."
+  "question": "What is the main conclusion of the document?",
+  "top_k": 4
 }
 ```
 
@@ -65,7 +86,14 @@ The API will be available at:
 
 ```json
 {
-  "summary": "This is a short summary."
+  "answer": "The main conclusion of the document is to keep experiments small and iterate quickly.",
+  "sources": [
+    {
+      "file": "sample.txt",
+      "chunk_id": 0,
+      "content": "Keep experiments small and iterate quickly..."
+    }
+  ]
 }
 ```
 
