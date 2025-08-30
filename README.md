@@ -14,31 +14,6 @@ This project is modular, with clean separation of routes and services, and is re
 
 ---
 
-## 📂 Project Structure
-
-aiml-flowise-microservices/
-│── api/
-
-│ ├── main.py # FastAPI entrypoint
-
-│ ├── routes/ # API route handlers
-
-│ │ └── summarize.py
-
-│ └── services/ # Business logic / LLM integration
-
-│ └── llm_adapter.py
-
-│
-
-│── requirements.txt # Python dependencies
-
-│── README.md # Project documentation
-
-│── .gitignore # Ignore venv, cache, etc.
-
-│── venv/ (ignored) # Local virtual environment
-
 
 ## 🛠️ Setup & Installation
 
