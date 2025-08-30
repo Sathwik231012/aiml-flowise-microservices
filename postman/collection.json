@@ -1,0 +1,59 @@
+{
+  "info": {
+    "name": "AIML Microservices - OneVarsity",
+    "_postman_id": "aiml-microservices",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Summarize",
+      "request": {
+        "method": "POST",
+        "header": [{"key":"Content-Type","value":"application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"text\":\"Long text to summarize...\"}"
+        },
+        "url": { "raw": "http://127.0.0.1:8000/summarize/", "protocol": "http", "host": ["127.0.0.1"], "port":"8000", "path":["summarize",""] }
+      }
+    },
+    {
+      "name": "Upload Document",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            { "key": "file", "type": "file", "src": "" }
+          ]
+        },
+        "url": { "raw": "http://127.0.0.1:8000/docs/upload", "protocol": "http", "host": ["127.0.0.1"], "port":"8000", "path":["docs","upload"] }
+      }
+    },
+    {
+      "name": "QA (RAG)",
+      "request": {
+        "method": "POST",
+        "header": [{"key":"Content-Type","value":"application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"question\":\"What is the main conclusion of the document?\", \"top_k\":4}"
+        },
+        "url": { "raw": "http://127.0.0.1:8000/qa/", "protocol": "http", "host": ["127.0.0.1"], "port":"8000", "path":["qa",""] }
+      }
+    },
+    {
+      "name": "Learning Path",
+      "request": {
+        "method": "POST",
+        "header": [{"key":"Content-Type","value":"application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"topic\":\"Machine Learning\",\"level\":\"beginner\"}"
+        },
+        "url": { "raw": "http://127.0.0.1:8000/learning-path/", "protocol": "http", "host": ["127.0.0.1"], "port":"8000", "path":["learning-path",""] }
+      }
+    }
+  ]
+}

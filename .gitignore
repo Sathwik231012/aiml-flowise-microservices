@@ -1,21 +1,25 @@
+# Virtual environment
+venv/
+.env
+
 # Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 
-# Databases & logs
+# Chroma DB (vector store)
+chroma_db/
 *.db
-*.log
+*.sqlite
 
-# Environment
-.env
-venv/
-
-# IDE settings
+# VSCode / IDE
 .vscode/
 .idea/
 
-# OS files
+# OS
 .DS_Store
 Thumbs.db
+
+# Logs
+*.log
