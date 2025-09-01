@@ -61,7 +61,7 @@ A FastAPI-based microservice that exposes AI/ML functionalities like document up
 5. **Run the Server**
 
    ```bash
-   uvicorn api.main:app --reload --host 0.0.0.0 --port 8000
+   uvicorn api.main:app --reload --reload-dir api --port 8000
    ```
 
 6. **Run the Frontend Application (In a New Terminal)**
