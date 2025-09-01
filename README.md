@@ -58,17 +58,30 @@ A FastAPI-based microservice that exposes AI/ML functionalities like document up
    ```
    Inside the `.env` file, set your `OPENROUTER_API_KEY`.
 
-## Run the Server
+5. **Run the Server**
 
-```bash
-uvicorn api.main:app --reload --host 0.0.0.0 --port 8000
-```
+  ```bash
+  uvicorn api.main:app --reload --host 0.0.0.0 --port 8000
+  ```
 
-The API will be available at:
+6. **Run the Frontend Application (In a New Terminal)**
 
-👉 Swagger UI: http://127.0.0.1:8000/docs
+  For the best experience, run the backend and frontend servers at the same time in two separate terminals.
 
-👉 ReDoc: http://127.0.0.1:8000/redoc
+  1.  Open a **new, second** PowerShell terminal.
+  2.  Navigate to the `frontend` directory, install dependencies, and start the app.
+
+  ```bash
+  # In your second terminal, from the project root
+  cd frontend
+  npm install
+  npm run dev
+  ```
+  The API will be available at:
+
+  👉 Swagger UI: http://127.0.0.1:8000/docs
+
+  👉 ReDoc: http://127.0.0.1:8000/redoc
 
 
 ## Example API Usage - Postman
