@@ -71,7 +71,7 @@ The API will be available at:
 👉 ReDoc: http://127.0.0.1:8000/redoc
 
 
-## Example API Usage
+## Example API Usage - Postman
 
 ### 1. Import the Collection
 
