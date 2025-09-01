@@ -1,59 +1,94 @@
 {
   "info": {
-    "name": "AIML Microservices - OneVarsity",
-    "_postman_id": "aiml-microservices",
+    "name": "AI-ML Flowise Microservices",
+    "_postman_id": "f5b4b5d0-2d9c-4c1c-b97d-abc123456789",
+    "description": "Postman collection to test document upload, question answering, and summarization APIs.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
     {
-      "name": "Summarize",
-      "request": {
-        "method": "POST",
-        "header": [{"key":"Content-Type","value":"application/json"}],
-        "body": {
-          "mode": "raw",
-          "raw": "{\"text\":\"Long text to summarize...\"}"
-        },
-        "url": { "raw": "http://127.0.0.1:8000/summarize/", "protocol": "http", "host": ["127.0.0.1"], "port":"8000", "path":["summarize",""] }
-      }
-    },
-    {
-      "name": "Upload Document",
+      "name": "1. Upload Document",
       "request": {
         "method": "POST",
         "header": [],
         "body": {
           "mode": "formdata",
           "formdata": [
-            { "key": "file", "type": "file", "src": "" }
+            {
+              "key": "file",
+              "type": "file",
+              "src": "{{filePath}}"
+            }
           ]
         },
-        "url": { "raw": "http://127.0.0.1:8000/docs/upload", "protocol": "http", "host": ["127.0.0.1"], "port":"8000", "path":["docs","upload"] }
-      }
+        "url": {
+          "raw": "{{baseUrl}}/docs/upload",
+          "host": ["{{baseUrl}}"],
+          "path": ["docs", "upload"]
+        },
+        "description": "Upload a text/PDF document to the Chroma vector store."
+      },
+      "response": []
     },
     {
-      "name": "QA (RAG)",
+      "name": "2. Ask a Question (RAG)",
       "request": {
         "method": "POST",
-        "header": [{"key":"Content-Type","value":"application/json"}],
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
         "body": {
           "mode": "raw",
-          "raw": "{\"question\":\"What is the main conclusion of the document?\", \"top_k\":4}"
+          "raw": "{\n  \"question\": \"{{question}}\",\n  \"top_k\": 4\n}"
         },
-        "url": { "raw": "http://127.0.0.1:8000/qa/", "protocol": "http", "host": ["127.0.0.1"], "port":"8000", "path":["qa",""] }
-      }
+        "url": {
+          "raw": "{{baseUrl}}/qa/",
+          "host": ["{{baseUrl}}"],
+          "path": ["qa", ""]
+        },
+        "description": "Ask a question about the uploaded documents. The system retrieves the top 4 matching chunks and generates an answer."
+      },
+      "response": []
     },
     {
-      "name": "Learning Path",
+      "name": "3. Summarize Text",
       "request": {
         "method": "POST",
-        "header": [{"key":"Content-Type","value":"application/json"}],
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
         "body": {
           "mode": "raw",
-          "raw": "{\"topic\":\"Machine Learning\",\"level\":\"beginner\"}"
+          "raw": "{\n  \"text\": \"This is a sample text that will be summarized by the model.\"\n}"
         },
-        "url": { "raw": "http://127.0.0.1:8000/learning-path/", "protocol": "http", "host": ["127.0.0.1"], "port":"8000", "path":["learning-path",""] }
-      }
+        "url": {
+          "raw": "{{baseUrl}}/summarize/",
+          "host": ["{{baseUrl}}"],
+          "path": ["summarize", ""]
+        },
+        "description": "Summarize any given text using the LLM."
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:8000"
+    },
+    {
+      "key": "filePath",
+      "value": "C:/Users/SATHWIK/aiml-flowise-microservices/sample.txt"
+    },
+    {
+      "key": "question",
+      "value": "What is the main idea of the document?"
     }
   ]
 }
